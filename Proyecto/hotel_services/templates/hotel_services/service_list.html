@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Servicios | The Copper Lantern Hotel{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'hotel_services/css/services.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="services-hero">
+    <p class="eyebrow">Servicios del hotel</p>
+    <h1>Atenciones que hacen de una estancia, una memoria.</h1>
+    <p>Algunos beneficios están incluidos según la habitación elegida. Otros pueden añadirse para personalizar cada visita.</p>
+</section>
+
+<section class="services-grid" aria-label="Catálogo de servicios">
+    {% for service in services %}
+        <article class="service-tile reveal">
+            <div class="service-image"{% if service.image %} style="background-image: url('{{ service.image.url }}');"{% endif %}></div>
+            <div class="service-content">
+                <p class="eyebrow">{% if service.duration_minutes %}{{ service.duration_minutes }} minutos{% else %}Experiencia del hotel{% endif %}</p>
+                <h2>{{ service.name }}</h2>
+                <p>{{ service.short_description }}</p>
+                {% if service.price is not None %}<p class="service-price">COP ${{ service.price|floatformat:0 }} <span>{{ service.get_billing_unit_display|lower }}</span></p>{% endif %}
+                {% if service.can_be_included %}<span class="service-badge">Disponible en suites seleccionadas</span>{% endif %}
+            </div>
+        </article>
+    {% empty %}
+        <div class="services-empty">
+            <p class="eyebrow">Próximamente</p>
+            <h2>El catálogo de servicios se prepara desde el administrador.</h2>
+            <p>Cada servicio creado desde el panel aparecerá automáticamente en esta página.</p>
+        </div>
+    {% endfor %}
+</section>
+{% endblock %}

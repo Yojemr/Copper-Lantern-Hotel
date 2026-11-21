@@ -1,0 +1,446 @@
+:root {
+  --primary: #321f18;
+  --secondary: #20372f;
+  --accent: #e0bd7b;
+  --header-color: #f1e6d2;
+  --breadcrumbs-bg: #62412f;
+  --link-fg: #5a2428;
+  --button-bg: #8f672e;
+  --button-hover-bg: #b98b49;
+}
+#header {
+  min-height: 76px;
+  padding: 8px 24px;
+  border-bottom: 1px solid rgba(224, 189, 123, 0.4);
+  background: #171513;
+}
+#site-name a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #f1e6d2;
+  text-decoration: none;
+}
+#site-name img {
+  width: 46px;
+  height: 58px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 8px rgba(255, 178, 55, 0.32));
+}
+#site-name strong,
+#site-name small {
+  display: block;
+}
+#site-name strong {
+  font:
+    normal 1.25rem Georgia,
+    serif;
+}
+#site-name small {
+  margin-top: 2px;
+  color: #e0bd7b;
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+body {
+  background-color: #efe4d1;
+  background-image:
+    linear-gradient(rgba(251, 247, 239, 0.82), rgba(251, 247, 239, 0.82)),
+    url("../images/heritage-wallpaper.png");
+  background-size: auto, 650px;
+}
+html[data-theme="dark"] body {
+  background-image:
+    linear-gradient(rgba(23, 21, 19, 0.88), rgba(23, 21, 19, 0.88)),
+    url("../images/heritage-wallpaper.png");
+}
+
+@media (prefers-color-scheme: dark) {
+  html[data-theme="auto"] body {
+    background-image:
+      linear-gradient(rgba(23, 21, 19, 0.88), rgba(23, 21, 19, 0.88)),
+      url("../images/heritage-wallpaper.png");
+  }
+}
+.module,
+#content-related {
+  border: 1px solid rgba(98, 65, 47, 0.2);
+  background: rgba(255, 253, 248, 0.92);
+  box-shadow: 0 8px 28px rgba(50, 31, 24, 0.1);
+}
+
+html[data-theme="dark"] .module,
+html[data-theme="dark"] #content-related {
+  border: 1px solid rgba(224, 189, 123, 0.18);
+  background: rgba(32, 28, 24, 0.92);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35);
+}
+
+@media (prefers-color-scheme: dark) {
+  html[data-theme="auto"] .module,
+  html[data-theme="auto"] #content-related {
+    border: 1px solid rgba(224, 189, 123, 0.18);
+    background: rgba(32, 28, 24, 0.92);
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35);
+  }
+}
+.module h2,
+.module caption,
+.inline-group h2 {
+  background: #20372f;
+  color: #f1e6d2;
+}
+.button,
+input[type="submit"],
+input[type="button"],
+.submit-row input,
+a.button {
+  background: #8f672e;
+}
+.button:hover,
+.button:focus,
+.button:active,
+input[type="submit"]:hover,
+input[type="submit"]:focus,
+input[type="submit"]:active,
+input[type="button"]:hover,
+input[type="button"]:focus,
+input[type="button"]:active {
+  background: #b98b49;
+  color: #171513;
+}
+body.copper-login {
+  min-height: 100vh;
+  background-image:
+    linear-gradient(105deg, rgba(16, 14, 12, 0.9), rgba(32, 55, 47, 0.7)),
+    url("../../../../media/seed/hero-lobby.png");
+  background-position: center;
+  background-size: cover;
+}
+.copper-login #header {
+  background: rgba(23, 21, 19, 0.94);
+}
+.copper-login #nav-sidebar,
+.copper-login .toggle-nav-sidebar,
+.copper-login #content > h1 {
+  display: none;
+}
+.copper-login.main.shifted > #nav-sidebar + .content,
+.copper-login #main {
+  padding-left: 0;
+}
+.copper-login #content {
+  width: min(460px, calc(100% - 32px));
+  margin: 54px auto;
+  padding: 0;
+}
+.copper-login #content-main {
+  float: none;
+}
+.copper-login-card {
+  position: relative;
+  padding: 42px;
+  border: 1px solid rgba(224, 189, 123, 0.55);
+  background: rgba(251, 247, 239, 0.96);
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.48);
+  text-align: center;
+  animation: login-arrive 0.7s ease both;
+}
+.copper-login-card::before {
+  position: absolute;
+  inset: 9px;
+  border: 1px solid rgba(185, 139, 73, 0.25);
+  pointer-events: none;
+  content: "";
+}
+.login-emblem img {
+  width: 74px;
+  height: 104px;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 9px rgba(152, 92, 28, 0.35));
+}
+.login-kicker {
+  margin: 8px 0 4px;
+  color: #8f672e;
+  font-size: 0.7rem;
+  font-weight: bold;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+.copper-login-card h1 {
+  margin: 0 0 10px;
+  color: #321f18;
+  font:
+    normal 2.2rem Georgia,
+    serif;
+}
+.login-intro {
+  margin: 0 auto 24px;
+  color: #62412f;
+  line-height: 1.5;
+}
+.copper-login-card form {
+  position: relative;
+  z-index: 1;
+  text-align: left;
+}
+.copper-login-card .form-row {
+  padding: 0 0 17px;
+}
+.copper-login-card label {
+  display: block;
+  margin-bottom: 6px;
+  color: #62412f;
+  font-size: 0.72rem;
+  font-weight: bold;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.copper-login-card input[type="text"],
+.copper-login-card input[type="password"] {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 43px;
+  border: 1px solid rgba(98, 65, 47, 0.4);
+  background: #fffdf8;
+}
+.copper-login-card input:focus {
+  border-color: #b98b49;
+  outline: 3px solid rgba(185, 139, 73, 0.2);
+}
+.copper-login-card .submit-row {
+  padding: 0;
+  background: transparent;
+}
+.copper-login-card .submit-row button {
+  width: 100%;
+  padding: 12px;
+  border: 0;
+  color: #171513;
+  background: #b98b49;
+  cursor: pointer;
+  font-weight: bold;
+}
+.copper-login-card .submit-row button:hover {
+  background: #e0bd7b;
+}
+.demo-access {
+  position: relative;
+  z-index: 1;
+  margin: 18px 0 8px;
+  padding: 10px;
+  border: 1px solid rgba(98, 65, 47, 0.2);
+  color: #62412f;
+  background: #f1e6d2;
+  font-size: 0.78rem;
+}
+.back-to-hotel {
+  position: relative;
+  z-index: 1;
+  color: #5a2428;
+  font-size: 0.85rem;
+}
+.copper-login-card .errornote {
+  position: relative;
+  z-index: 1;
+  margin: 0 0 18px;
+  padding: 10px;
+  color: #fff;
+  background: #5a2428;
+}
+@keyframes login-arrive {
+  from {
+    transform: translateY(24px);
+    opacity: 0;
+  }
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
+@media (max-width: 600px) {
+  .copper-login-card {
+    padding: 30px 24px;
+  }
+  #site-name small {
+    display: none;
+  }
+}
+/* Legibilidad del panel y de los errores de los formularios. */
+/* Legibilidad del panel y de los errores de los formularios. */
+:root,
+html[data-theme="light"] {
+  --body-fg: #241a15;
+  --body-bg: #efe4d1;
+  --body-quiet-color: #50382c;
+  --body-medium-color: #3f2c23;
+  --body-loud-color: #171513;
+
+  --link-fg: #5a2428;
+  --link-hover-color: #381519;
+
+  --hairline-color: #aa9075;
+  --border-color: #9c8067;
+
+  --darkened-bg: #f7efe3;
+  --selected-bg: #ead9bf;
+  --selected-row: #f4e4b6;
+
+  --button-fg: #fff8ec;
+  --button-bg: #8f672e;
+  --button-hover-bg: #b98b49;
+
+  --header-color: #f1e6d2;
+  --header-link-color: #f1e6d2;
+
+  --breadcrumbs-fg: #fff8ec;
+  --breadcrumbs-link-fg: #fff8ec;
+  --breadcrumbs-bg: #503423;
+
+  color-scheme: light;
+}
+html[data-theme="dark"] {
+  --body-fg: #f1e6d2;
+  --body-bg: #171513;
+  --body-quiet-color: #d5c0a6;
+  --body-medium-color: #e6d6c1;
+  --body-loud-color: #fff8ec;
+
+  --link-fg: #f0c987;
+  --link-hover-color: #ffdca6;
+
+  --hairline-color: #5f4a3c;
+  --border-color: #7b6350;
+
+  --darkened-bg: #211c18;
+  --selected-bg: #2c2520;
+  --selected-row: #3a3026;
+
+  --button-fg: #171513;
+  --button-bg: #c89d58;
+  --button-hover-bg: #e0bd7b;
+
+  --header-color: #f1e6d2;
+  --header-link-color: #f1e6d2;
+
+  --breadcrumbs-fg: #fff8ec;
+  --breadcrumbs-link-fg: #fff8ec;
+  --breadcrumbs-bg: #3b2820;
+
+  color-scheme: dark;
+}
+@media (prefers-color-scheme: dark) {
+  html[data-theme="auto"] {
+    --body-fg: #f1e6d2;
+    --body-bg: #171513;
+    --body-quiet-color: #d5c0a6;
+    --body-medium-color: #e6d6c1;
+    --body-loud-color: #fff8ec;
+
+    --link-fg: #f0c987;
+    --link-hover-color: #ffdca6;
+
+    --hairline-color: #5f4a3c;
+    --border-color: #7b6350;
+
+    --darkened-bg: #211c18;
+    --selected-bg: #2c2520;
+    --selected-row: #3a3026;
+
+    --button-fg: #171513;
+    --button-bg: #c89d58;
+    --button-hover-bg: #e0bd7b;
+
+    --header-color: #f1e6d2;
+    --header-link-color: #f1e6d2;
+
+    --breadcrumbs-fg: #fff8ec;
+    --breadcrumbs-link-fg: #fff8ec;
+    --breadcrumbs-bg: #3b2820;
+
+    color-scheme: dark;
+  }
+}
+#content,
+#content-main,
+#content-related,
+.module,
+.module td,
+.module th {
+  color: var(--body-fg);
+}
+#content a:not(.button),
+#content-main a:not(.button) {
+  color: var(--link-fg);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+#content a:not(.button):hover,
+#content-main a:not(.button):hover {
+  color: var(--link-hover-color);
+}
+table thead th,
+.module caption,
+.module h2,
+.inline-group h2 {
+  color: var(--body-fg);
+  background: var(--selected-bg);
+}
+table thead th a,
+.module caption a {
+  color: var(--body-fg) !important;
+}
+.form-row label,
+.aligned label,
+.inline-group label {
+  color: var(--body-fg);
+  font-weight: 600;
+}
+.errorlist,
+.errornote,
+.form-row.errors .errorlist,
+.inline-group .errorlist {
+  color: var(--error-color);
+  font-weight: 700;
+}
+.errorlist li {
+  padding: 0.3rem 0.5rem;
+  border-left: 3px solid var(--error-color);
+  background: #fff1f1;
+}
+.errors input,
+.errors select,
+.errors textarea,
+.form-row.errors input,
+.form-row.errors select,
+.form-row.errors textarea {
+  border: 2px solid var(--error-color) !important;
+  background: #fff7f7;
+}
+.help,
+p.help,
+.helptext {
+  color: var(--body-quiet-color) !important;
+}
+.breadcrumbs,
+div.breadcrumbs {
+  color: var(--breadcrumbs-fg);
+  background: var(--breadcrumbs-bg);
+}
+.breadcrumbs a,
+div.breadcrumbs a {
+  color: var(--breadcrumbs-link-fg);
+}
+#nav-sidebar .module caption,
+#nav-sidebar .module th,
+#nav-sidebar .module td {
+  color: var(--body-fg);
+  background: var(--darkened-bg);
+}
+#nav-sidebar .module caption a,
+#nav-sidebar .module th a,
+#nav-sidebar .module td a {
+  color: var(--body-fg) !important;
+}

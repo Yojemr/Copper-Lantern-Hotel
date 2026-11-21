@@ -1,0 +1,21 @@
+{% extends "admin/base.html" %}
+{% load static %}
+
+{% block title %}{% if subtitle %}{{ subtitle }} | {% endif %}Administración · The Copper Lantern Hotel{% endblock %}
+
+{% block extrastyle %}
+{{ block.super }}
+<link rel="icon" type="image/png" href="{% static 'hotel_core/images/copper-lantern-logo.png' %}">
+<link rel="stylesheet" href="{% static 'hotel_core/css/admin.css' %}">
+{% endblock %}
+
+{% block branding %}
+<div id="site-name">
+    <a href="{% url 'admin:index' %}">
+        <img src="{% static 'hotel_core/images/copper-lantern-logo.png' %}" alt="Lámpara de cobre">
+        <span><strong>The Copper Lantern</strong><small>Administración del hotel</small></span>
+    </a>
+</div>
+{% endblock %}
+
+{% block nav-global %}{% endblock %}

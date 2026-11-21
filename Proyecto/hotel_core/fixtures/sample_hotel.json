@@ -1,0 +1,314 @@
+[
+  {
+    "model": "hotel_core.sitesettings",
+    "pk": 1,
+    "fields": {
+      "hotel_name": "The Copper Lantern Hotel",
+      "short_description": "Una estancia con historia, luz cálida y hospitalidad.",
+      "description": "The Copper Lantern Hotel reúne la calidez de la madera, la elegancia del latón y la tranquilidad de una hospitalidad pensada con calma.",
+      "logo": "",
+      "address": "128 Lantern Row, Ashford",
+      "phone": "+57 300 000 0000",
+      "email": "reservas@copperlantern.local",
+      "check_in_time": "15:00:00",
+      "check_out_time": "11:00:00",
+      "instagram_url": "",
+      "facebook_url": "",
+      "is_published": true
+    }
+  },
+  {
+    "model": "hotel_core.heroslide",
+    "pk": 1,
+    "fields": {
+      "title": "Una estancia con historia",
+      "subtitle": "Hospitalidad americana clásica desde 1926.",
+      "image": "seed/hotel-exterior.png",
+      "button_label": "Explorar habitaciones",
+      "button_url": "/habitaciones/",
+      "order": 1,
+      "is_active": true
+    }
+  },
+  {
+    "model": "hotel_core.heroslide",
+    "pk": 2,
+    "fields": {
+      "title": "El gran lobby",
+      "subtitle": "Madera, latón y una bienvenida que conserva su historia.",
+      "image": "seed/hero-lobby.png",
+      "button_label": "Conocer el hotel",
+      "button_url": "/#hotel",
+      "order": 2,
+      "is_active": true
+    }
+  },
+  {
+    "model": "hotel_core.heroslide",
+    "pk": 3,
+    "fields": {
+      "title": "La biblioteca",
+      "subtitle": "Un refugio junto al fuego para las noches de lluvia.",
+      "image": "seed/hero-library.png",
+      "button_label": "Explorar habitaciones",
+      "button_url": "/habitaciones/",
+      "order": 3,
+      "is_active": true
+    }
+  },
+  {
+    "model": "hotel_core.quote",
+    "pk": 1,
+    "fields": {
+      "text": "Viajar es fatal para los prejuicios, la intolerancia y la estrechez de miras.",
+      "author": "Mark Twain",
+      "author_description": "Escritor estadounidense",
+      "source_url": "https://www.gutenberg.org/cache/epub/5693/pg5693-images.html",
+      "image": "",
+      "attribution": "Traducción propia de The Innocents Abroad, capítulo final.",
+      "order": 1,
+      "is_active": true
+    }
+  },
+  {
+    "model": "hotel_core.quote",
+    "pk": 2,
+    "fields": {
+      "text": "Por mi parte, viajo no para llegar a algún lugar, sino por viajar mismo.",
+      "author": "Robert Louis Stevenson",
+      "author_description": "Escritor escocés",
+      "source_url": "https://www.gutenberg.org/files/2537/2537-h/2537-h.htm",
+      "image": "",
+      "attribution": "Traducción propia de The Pocket R. L. S.",
+      "order": 2,
+      "is_active": true
+    }
+  },
+  {
+    "model": "hotel_core.quote",
+    "pk": 3,
+    "fields": {
+      "text": "Con paso ligero y corazón alegre, tomo el camino abierto.",
+      "author": "Walt Whitman",
+      "author_description": "Poeta estadounidense",
+      "source_url": "https://www.gutenberg.org/files/1322/1322-h/1322-h.htm",
+      "image": "",
+      "attribution": "Traducción propia de Song of the Open Road, en Leaves of Grass.",
+      "order": 3,
+      "is_active": true
+    }
+  },
+  {
+    "model": "hotel_services.service",
+    "pk": 1,
+    "fields": {
+      "name": "Copper Steam Ritual",
+      "slug": "copper-steam-ritual",
+      "short_description": "Ritual privado de vapor, descanso y aromaterapia.",
+      "description": "Una hora de pausa en nuestro spa, preparada con vapor suave, toallas cálidas y aceites de temporada.",
+      "image": "seed/service-spa.png",
+      "price": "145000.00",
+      "billing_unit": "service",
+      "duration_minutes": 60,
+      "can_be_included": true,
+      "is_featured": true,
+      "is_active": true,
+      "created_at": "2026-09-22T00:00:00Z",
+      "updated_at": "2026-09-22T00:00:00Z"
+    }
+  },
+  {
+    "model": "hotel_services.service",
+    "pk": 2,
+    "fields": {"name": "Desayuno de la casa", "slug": "desayuno-de-la-casa", "short_description": "Café recién hecho, pan artesanal y sabores clásicos al comenzar el día.", "description": "Desayuno servido en el comedor del hotel con opciones frescas y calientes.", "image": "seed/hero-lobby.png", "price": "48000.00", "billing_unit": "person", "duration_minutes": null, "can_be_included": true, "is_featured": true, "is_active": true, "created_at": "2026-09-22T00:00:00Z", "updated_at": "2026-09-22T00:00:00Z"}
+  },
+  {
+    "model": "hotel_services.service",
+    "pk": 3,
+    "fields": {"name": "Té junto a la chimenea", "slug": "te-junto-a-la-chimenea", "short_description": "Una pausa de té y repostería en el salón de lectura.", "description": "Selección de té, café y pastelería para disfrutar en el salón del hotel.", "image": "seed/hero-library.png", "price": "42000.00", "billing_unit": "person", "duration_minutes": 45, "can_be_included": true, "is_featured": true, "is_active": true, "created_at": "2026-09-22T00:00:00Z", "updated_at": "2026-09-22T00:00:00Z"}
+  },
+  {
+    "model": "hotel_services.service",
+    "pk": 4,
+    "fields": {"name": "Masaje restaurador", "slug": "masaje-restaurador", "short_description": "Un tratamiento privado para descansar después del viaje.", "description": "Sesión de masaje de una hora, previa reserva y sujeta a disponibilidad.", "image": "seed/service-spa.png", "price": "160000.00", "billing_unit": "service", "duration_minutes": 60, "can_be_included": true, "is_featured": false, "is_active": true, "created_at": "2026-09-22T00:00:00Z", "updated_at": "2026-09-22T00:00:00Z"}
+  },
+  {
+    "model": "hotel_services.service",
+    "pk": 5,
+    "fields": {"name": "Cena privada", "slug": "cena-privada", "short_description": "Una mesa íntima con menú de temporada.", "description": "Servicio de cena privada para dos personas, coordinado con antelación.", "image": "seed/hero-lobby.png", "price": "230000.00", "billing_unit": "service", "duration_minutes": 90, "can_be_included": true, "is_featured": false, "is_active": true, "created_at": "2026-09-22T00:00:00Z", "updated_at": "2026-09-22T00:00:00Z"}
+  },
+  {
+    "model": "hotel_services.service",
+    "pk": 6,
+    "fields": {"name": "Traslado de llegada", "slug": "traslado-de-llegada", "short_description": "Recogida coordinada para una llegada tranquila.", "description": "Traslado privado desde el punto de llegada acordado con el hotel.", "image": "seed/hotel-exterior.png", "price": "95000.00", "billing_unit": "service", "duration_minutes": null, "can_be_included": true, "is_featured": false, "is_active": true, "created_at": "2026-09-22T00:00:00Z", "updated_at": "2026-09-22T00:00:00Z"}
+  },
+  {
+    "model": "hotel_rooms.room",
+    "pk": 1,
+    "fields": {
+      "number": "101",
+      "name": "The Traveler Room",
+      "slug": "101-the-traveler-room",
+      "short_description": "Una suite económica con escritorio y luz de tarde.",
+      "description": "Una habitación serena para viajeros que valoran el carácter: cama queen, escritorio de madera y una vista tranquila del vecindario.",
+      "cover_image": "seed/room-101-traveler.png",
+      "door_image": "seed/door-mahogany.png",
+      "price_per_night": "280000.00",
+      "capacity": 2,
+      "beds_description": "Una cama queen",
+      "min_stay_nights": 1,
+      "status": "available",
+      "is_featured": true,
+      "is_active": true,
+      "created_at": "2026-09-22T00:00:00Z",
+      "updated_at": "2026-09-22T00:00:00Z"
+    }
+  },
+  {
+    "model": "hotel_rooms.room",
+    "pk": 2,
+    "fields": {
+      "number": "102",
+      "name": "Maple Comfort",
+      "slug": "102-maple-comfort",
+      "short_description": "Una estancia clásica con cálidos detalles de arce.",
+      "description": "Habitación de esquina con cama queen y detalles en madera de arce.",
+      "cover_image": "seed/room-101-traveler.png",
+      "door_image": "seed/door-mahogany.png",
+      "price_per_night": "310000.00",
+      "capacity": 2,
+      "beds_description": "Una cama queen",
+      "min_stay_nights": 1,
+      "status": "available",
+      "is_featured": false,
+      "is_active": true,
+      "created_at": "2026-09-22T00:00:00Z",
+      "updated_at": "2026-09-22T00:00:00Z"
+    }
+  },
+  {
+    "model": "hotel_rooms.room",
+    "pk": 6,
+    "fields": {
+      "number": "103",
+      "name": "Copper Suite",
+      "slug": "103-copper-suite",
+      "short_description": "Una suite de carácter clásico, actualmente no disponible.",
+      "description": "Una habitación acogedora con detalles en madera y cobre.",
+      "cover_image": "seed/room-101-traveler.png",
+      "door_image": "seed/door-mahogany.png",
+      "price_per_night": "350000.00",
+      "capacity": 2,
+      "beds_description": "Una cama queen",
+      "min_stay_nights": 1,
+      "status": "unavailable",
+      "is_featured": false,
+      "is_active": true,
+      "created_at": "2026-09-22T00:00:00Z",
+      "updated_at": "2026-09-22T00:00:00Z"
+    }
+  },
+  {
+    "model": "hotel_rooms.room",
+    "pk": 3,
+    "fields": {
+      "number": "201",
+      "name": "Heritage King",
+      "slug": "201-heritage-king",
+      "short_description": "Una nueva estancia se prepara detrás de esta puerta.",
+      "description": "Suite king en preparación para la próxima temporada.",
+      "cover_image": "seed/room-101-traveler.png",
+      "door_image": "seed/door-forest.png",
+      "price_per_night": "420000.00",
+      "capacity": 2,
+      "beds_description": "Una cama king",
+      "min_stay_nights": 2,
+      "status": "coming_soon",
+      "is_featured": false,
+      "is_active": true,
+      "created_at": "2026-09-22T00:00:00Z",
+      "updated_at": "2026-09-22T00:00:00Z"
+    }
+  },
+  {
+    "model": "hotel_rooms.room",
+    "pk": 4,
+    "fields": {
+      "number": "202",
+      "name": "Lantern Suite",
+      "slug": "202-lantern-suite",
+      "short_description": "Esta habitación recibe cuidados antes de volver a abrir.",
+      "description": "Suite en mantenimiento programado.",
+      "cover_image": "seed/room-101-traveler.png",
+      "door_image": "seed/door-forest.png",
+      "price_per_night": "450000.00",
+      "capacity": 3,
+      "beds_description": "Una cama king y sofá cama",
+      "min_stay_nights": 2,
+      "status": "maintenance",
+      "is_featured": false,
+      "is_active": true,
+      "created_at": "2026-09-22T00:00:00Z",
+      "updated_at": "2026-09-22T00:00:00Z"
+    }
+  },
+  {
+    "model": "hotel_rooms.room",
+    "pk": 5,
+    "fields": {
+      "number": "301",
+      "name": "Presidential Oak Suite",
+      "slug": "301-presidential-oak-suite",
+      "short_description": "Nuestra suite más amplia, con chimenea y beneficios incluidos.",
+      "description": "La estancia principal del hotel reúne un dormitorio king, sala junto a la chimenea, biblioteca y detalles pensados para una visita prolongada.",
+      "cover_image": "seed/room-301-presidential.png",
+      "door_image": "seed/door-presidential.png",
+      "mirror_door_image": true,
+      "price_per_night": "890000.00",
+      "capacity": 3,
+      "beds_description": "Una cama king y sofá cama",
+      "min_stay_nights": 2,
+      "status": "available",
+      "is_featured": true,
+      "is_active": true,
+      "created_at": "2026-09-22T00:00:00Z",
+      "updated_at": "2026-09-22T00:00:00Z"
+    }
+  },
+  {
+    "model": "hotel_rooms.roomimage",
+    "pk": 1,
+    "fields": {
+      "room": 1,
+      "image": "seed/room-101-traveler.png",
+      "alt_text": "Interior de The Traveler Room con cama queen y escritorio de madera.",
+      "order": 1
+    }
+  },
+  {
+    "model": "hotel_rooms.roomimage",
+    "pk": 2,
+    "fields": {
+      "room": 5,
+      "image": "seed/room-301-presidential.png",
+      "alt_text": "Interior de la Presidential Oak Suite con chimenea y sala.",
+      "order": 1
+    }
+  },
+  {
+    "model": "hotel_rooms.roomservicebenefit",
+    "pk": 1,
+    "fields": {
+      "room": 5,
+      "service": 1,
+      "benefit_type": "included",
+      "discount_percentage": null,
+      "note": "Un ritual por estadía para hasta dos huéspedes."
+    }
+  },
+  {"model": "hotel_rooms.roomservicebenefit", "pk": 2, "fields": {"room": 5, "service": 2, "benefit_type": "included", "discount_percentage": null, "note": "Desayuno incluido para los huéspedes de la suite."}},
+  {"model": "hotel_rooms.roomservicebenefit", "pk": 3, "fields": {"room": 5, "service": 3, "benefit_type": "included", "discount_percentage": null, "note": "Una experiencia por estadía."}},
+  {"model": "hotel_rooms.roomservicebenefit", "pk": 4, "fields": {"room": 5, "service": 4, "benefit_type": "included", "discount_percentage": null, "note": "Una sesión por estadía."}},
+  {"model": "hotel_rooms.roomservicebenefit", "pk": 5, "fields": {"room": 5, "service": 5, "benefit_type": "included", "discount_percentage": null, "note": "Una cena privada por estadía."}},
+  {"model": "hotel_rooms.roomservicebenefit", "pk": 6, "fields": {"room": 5, "service": 6, "benefit_type": "included", "discount_percentage": null, "note": "Un traslado de llegada por estadía."}}
+]

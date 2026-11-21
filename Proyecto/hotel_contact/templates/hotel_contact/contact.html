@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}Contáctenos | The Copper Lantern Hotel{% endblock %}
+
+{% block content %}
+<section class="form-hero">
+    <p class="eyebrow">Contáctenos</p>
+    <h1>Comencemos a preparar su estancia.</h1>
+    <p>Escríbanos para solicitar información sobre habitaciones, servicios o celebraciones privadas.</p>
+</section>
+
+<section class="form-shell reveal">
+    <aside class="form-aside">
+        <p class="eyebrow">The Copper Lantern Hotel</p>
+        <h2>Hospitalidad atenta, desde el primer mensaje.</h2>
+        <p>El mensaje quedará registrado en el panel administrativo para que el equipo pueda responderlo.</p>
+    </aside>
+    <form method="post" class="hotel-form" novalidate>
+        {% csrf_token %}
+        {% for field in form %}
+            <div class="form-field{% if field.errors %} has-error{% endif %}">
+                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                {{ field }}
+                {% for error in field.errors %}<p class="field-error">{{ error }}</p>{% endfor %}
+            </div>
+        {% endfor %}
+        <button class="primary-action" type="submit">Enviar mensaje</button>
+    </form>
+</section>
+{% endblock %}

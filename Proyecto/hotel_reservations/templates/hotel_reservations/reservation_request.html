@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% load l10n %}
+{% load static %}
+
+{% block title %}Solicitar {{ room.name }} | The Copper Lantern Hotel{% endblock %}
+{% block extra_css %}<link rel="stylesheet" href="{% static 'hotel_reservations/css/reservations.css' %}?v=3">{% endblock %}
+
+{% block content %}
+<section class="form-hero">
+    <p class="eyebrow">Solicitud de reserva</p>
+    <h1>{{ room.name }}</h1>
+    <p>Habitación {{ room.number }} · COP ${{ room.price_per_night|floatformat:0 }} por noche · hasta {{ room.capacity }} huéspedes.</p>
+</section>
+
+<section class="form-shell reveal">
+    <aside class="form-aside">
+        <p class="eyebrow">Su estancia</p>
+        <h2>Una solicitud, sin cobro inmediato.</h2>
+        <p>El hotel confirmará la disponibilidad antes de formalizar la reserva. Los servicios incluidos se validan según la habitación elegida.</p>
+        {% if included_services %}<p><strong>Incluidos:</strong> {{ included_services|length }} beneficio{{ included_services|length|pluralize:'s' }} de la habitación.</p>{% endif %}
+        <section class="reservation-estimate" data-reservation-estimate data-room-rate="{{ room.price_per_night|unlocalize }}" aria-live="polite" aria-atomic="true">
+            <p class="eyebrow">Estimado de la estancia</p>
+            <dl>
+                <div><dt>Habitación</dt><dd data-estimate-room>—</dd></div>
+                <div><dt>Servicios</dt><dd data-estimate-services>—</dd></div>
+                <div><dt>Total</dt><dd data-estimate-total>—</dd></div>
+            </dl>
+            <p class="estimate-message" data-estimate-message>Elija las fechas para calcular un valor aproximado.</p>
+        </section>
+    </aside>
+    <form method="post" class="hotel-form" novalidate>
+        {% csrf_token %}
+        {% if form.non_field_errors %}<div class="form-errors">{{ form.non_field_errors }}</div>{% endif %}
+        {% for field in form %}
+            <div class="form-field{% if field.errors %} has-error{% endif %}">
+                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                {{ field }}
+                {% if field.help_text %}<p class="field-help">{{ field.help_text }}</p>{% endif %}
+                {% for error in field.errors %}<p class="field-error">{{ error }}</p>{% endfor %}
+            </div>
+        {% endfor %}
+        <button class="primary-action" type="submit">Enviar solicitud</button>
+    </form>
+</section>
+{{ service_pricing|json_script:'reservation-service-pricing' }}
+{% if completed_reservation %}
+<dialog class="confirmation-dialog" id="reservation-confirmation" aria-labelledby="confirmation-title">
+    <p class="eyebrow">Solicitud recibida</p>
+    <h2 id="confirmation-title">Su estancia comienza aquí.</h2>
+    <p>Hemos registrado su solicitud. El hotel confirmará la disponibilidad antes de formalizar la reserva.</p>
+    <dl>
+        <div><dt>Código</dt><dd>{{ completed_reservation.code }}</dd></div>
+        <div><dt>Habitación</dt><dd>{{ room.number }} · {{ room.name }}</dd></div>
+        <div><dt>Huésped</dt><dd>{{ completed_reservation.guest_name }}</dd></div>
+        <div><dt>Fechas</dt><dd>{{ completed_reservation.check_in_date|date:'d/m/Y' }} al {{ completed_reservation.check_out_date|date:'d/m/Y' }}</dd></div>
+        <div><dt>Huéspedes</dt><dd>{{ completed_reservation.guests }}</dd></div>
+        <div><dt>Habitación</dt><dd>COP ${{ completed_reservation.room_total|floatformat:0 }}</dd></div>
+        <div><dt>Servicios</dt><dd>COP ${{ completed_reservation.services_total|floatformat:0 }}</dd></div>
+        <div><dt>Total estimado</dt><dd>COP ${{ completed_reservation.estimated_total|floatformat:0 }}</dd></div>
+        <div><dt>Estado</dt><dd>{{ completed_reservation.get_status_display }}</dd></div>
+    </dl>
+    {% if completed_reservation.selected_services.exists %}
+    <h3>Detalle de servicios</h3>
+    <ul class="confirmation-services">
+        {% for line in completed_reservation.selected_services.all %}
+        <li>{{ line.service.name }} × {{ line.quantity }} · {% if line.is_included %}Incluido{% else %}COP ${{ line.subtotal|floatformat:0 }}{% endif %}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <div class="confirmation-actions">
+        <button type="button" class="primary-action js-confirmation-close">Aceptar</button>
+        <button type="button" class="secondary-action js-confirmation-close">Cerrar</button>
+    </div>
+</dialog>
+{% endif %}
+{% endblock %}
+{% block extra_js %}<script src="{% static 'hotel_reservations/js/reservations.js' %}"></script>{% endblock %}

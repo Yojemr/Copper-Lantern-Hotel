@@ -1,0 +1,28 @@
+.confirmation-dialog { width: min(560px, calc(100% - 2rem)); max-height: calc(100% - 2rem); padding: 2.8rem; border: 1px solid #b58a4a; color: #321f18; background: #f7f0e5; box-shadow: 0 25px 85px rgba(0, 0, 0, .5); }
+.confirmation-dialog::backdrop { background: rgba(23, 21, 19, .8); }
+.confirmation-dialog h2 { margin: .5rem 0 1rem; font-size: clamp(2rem, 5vw, 3rem); }
+.confirmation-dialog dl { margin: 1.5rem 0; border-top: 1px solid #b58a4a; }
+.confirmation-dialog dl div { display: flex; justify-content: space-between; gap: 1rem; padding: .7rem 0; border-bottom: 1px solid rgba(98, 65, 47, .2); }
+.confirmation-dialog dt { font-weight: bold; }
+.confirmation-dialog dd { margin: 0; text-align: right; }
+.confirmation-actions { display: flex; flex-wrap: wrap; gap: .8rem; }
+.confirmation-actions button { cursor: pointer; }
+.confirmation-actions .secondary-action { color: #321f18; border-color: #62412f; background: transparent; }
+.hotel-form .has-error label, .hotel-form .field-error, .hotel-form .form-errors { color: #a51d2d; }
+.hotel-form .has-error input, .hotel-form .has-error textarea { border: 2px solid #a51d2d; background: #fff4f4; }
+.hotel-form .has-error input:focus, .hotel-form .has-error textarea:focus { outline-color: rgba(165, 29, 45, .3); }
+.hotel-form .field-help { margin: 0; color: #62412f; font-size: .9rem; }
+.hotel-form .form-field:has(input[type="checkbox"]) { grid-column: 1 / -1; }
+.hotel-form input[type="checkbox"] { width: auto; padding: 0; background: transparent; }
+.hotel-form .form-field:has(input[type="checkbox"]) > div > div { margin: .5rem 0; }
+.hotel-form .form-field:has(input[type="checkbox"]) > div label { display: flex; align-items: flex-start; gap: .65rem; color: #321f18; font-size: .95rem; font-weight: normal; letter-spacing: normal; text-transform: none; }
+.hotel-form .has-error input[type="checkbox"] { outline: 2px solid rgba(165, 29, 45, .45); }
+.confirmation-services { margin: 0 0 1.5rem; padding-left: 1.25rem; color: #321f18; }
+.confirmation-services li { padding: .2rem 0; }
+.reservation-estimate { margin-top: 1.5rem; padding: 1.2rem; border: 1px solid rgba(181, 138, 74, .55); background: rgba(255, 253, 248, .72); }
+.reservation-estimate .eyebrow { margin-bottom: .7rem; }
+.reservation-estimate dl { margin: 0; }
+.reservation-estimate dl div { display: flex; justify-content: space-between; gap: 1rem; padding: .4rem 0; border-bottom: 1px solid rgba(98, 65, 47, .16); }
+.reservation-estimate dd { margin: 0; text-align: right; }
+.reservation-estimate dl div:last-child { border-bottom: 0; font-weight: bold; }
+.reservation-estimate .estimate-message { margin: .8rem 0 0; color: #62412f; font-size: .9rem; }

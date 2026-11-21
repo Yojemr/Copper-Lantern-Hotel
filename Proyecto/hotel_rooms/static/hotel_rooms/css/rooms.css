@@ -1,0 +1,103 @@
+.catalog-hero { min-height: 440px; }
+.catalog-hero h1 { max-width: 900px; font-size: clamp(3.2rem, 7vw, 6rem); }
+.catalog-hero p:last-child { max-width: 650px; font-size: 1.12rem; }
+.rooms-section { max-width: 1160px; margin: 3.5rem auto 6rem; padding: 1rem 3.5rem; border: 1px solid rgba(98, 65, 47, .22); background: rgba(251, 247, 239, .88); box-shadow: 0 24px 70px rgba(50, 31, 24, .14); backdrop-filter: blur(4px); }
+.room-entry { display: grid; grid-template-columns: minmax(300px, .85fr) minmax(0, 1fr); align-items: center; gap: 5rem; padding: 4.5rem 0; border-bottom: 1px solid rgba(98, 65, 47, .24); }
+.room-entry:last-child { border-bottom: 0; }
+.room-entry:nth-child(even) .door-card { order: 2; }
+.door-card { position: relative; display: block; width: min(100%, 390px); min-height: 540px; padding: 0; border: 0; background: transparent; cursor: pointer; text-align: inherit; perspective: 1500px; }
+.door-frame { position: absolute; inset: 0; overflow: hidden; border: 10px solid #281912; background-color: #4d3325; background-image: linear-gradient(rgba(241, 230, 210, .18), rgba(241, 230, 210, .18)), url('../../hotel_core/images/heritage-wallpaper.png'); background-size: 500px; box-shadow: 14px 18px 35px rgba(23, 21, 19, .28); }
+.door-frame::after { position: absolute; right: 0; bottom: 0; left: 0; height: 14px; background: linear-gradient(#815538, #2a1a12); content: ''; }
+.room-preview { position: absolute; inset: 8% 12% 3%; border: 8px solid #21140f; background: radial-gradient(circle at 48% 38%, rgba(255, 219, 146, .86), rgba(83, 47, 23, .55) 43%, #24160f 85%); background-position: center; background-size: cover; box-shadow: inset 0 0 45px rgba(0, 0, 0, .38); }
+.door-panel { position: absolute; z-index: 2; inset: 0; display: block; transform-origin: left center; border: 0; background-color: #58321f; background-image: linear-gradient(90deg, #3c2214, #704126 48%, #4a2917); background-position: center; background-size: cover; box-shadow: inset -18px 0 28px rgba(19, 10, 6, .25); backface-visibility: hidden; transition: transform .9s cubic-bezier(.18, .72, .12, 1), filter .5s ease, box-shadow .9s ease; will-change: transform; }
+.door-frame.has-photo .door-panel { background-size: cover; }
+.door-number { position: absolute; z-index: 3; top: 27%; left: 50%; min-width: 105px; padding: .46rem .8rem; transform: translateX(-50%); border: 1px solid #e0bd7b; border-radius: 99px; background: linear-gradient(#c9a35f, #8e642d); color: #21140f; box-shadow: 0 3px 12px rgba(0, 0, 0, .42); font-size: 1.45rem; font-weight: bold; letter-spacing: .2em; text-align: center; text-shadow: 0 1px rgba(255, 255, 255, .3); }
+.door-knob { display: none; }
+.door-card:hover .door-panel, .door-card:focus-visible .door-panel, .door-card.is-opening .door-panel { transform: rotateY(-82deg); filter: brightness(.84); box-shadow: 25px 0 35px rgba(0, 0, 0, .4); }
+.door-card:hover .room-preview, .door-card:focus-visible .room-preview { animation: room-glow 2.4s ease-in-out infinite; }
+.door-card:focus-visible { outline: 3px solid var(--brass); outline-offset: 7px; }
+.room-summary { position: relative; padding: 2.2rem; }
+.room-summary::before { position: absolute; top: 0; bottom: 0; left: 0; width: 2px; background: linear-gradient(transparent, var(--brass), transparent); content: ''; }
+.room-summary h2 { margin-bottom: .9rem; font-size: clamp(2.4rem, 4.5vw, 4rem); font-weight: normal; }
+.room-price { color: var(--burgundy); font-size: 1.25rem; font-weight: bold; }
+.room-price span { color: var(--wood); font-size: .9rem; font-weight: normal; }
+.room-status { color: var(--wood); font-size: .82rem; font-weight: bold; letter-spacing: .14em; text-transform: uppercase; }
+.is-locked { cursor: default; filter: saturate(.72) brightness(.9); }
+.is-locked:hover .door-panel { transform: none; filter: none; box-shadow: inset -18px 0 28px rgba(19, 10, 6, .25); }
+.construction-tape { position: absolute; z-index: 5; left: -18%; width: 136%; padding: .32rem 0; transform: rotate(-26deg); background: repeating-linear-gradient(45deg, #f4bd24 0 20px, #21140f 20px 40px); color: #21140f; font: bold .78rem Arial, sans-serif; letter-spacing: .2em; text-align: center; text-shadow: 0 1px #f4bd24; box-shadow: 0 4px 8px rgba(0, 0, 0, .24); }
+.tape-one { top: 34%; }.tape-two { top: 59%; transform: rotate(26deg); }
+.maintenance-sign, .unavailable-sign { position: absolute; z-index: 5; top: 48%; left: 50%; width: 72%; padding: .85rem; transform: translate(-50%, -50%) rotate(-3deg); border: 2px solid var(--brass); background: var(--cream); color: var(--walnut); box-shadow: 0 7px 20px rgba(0, 0, 0, .3); font-weight: bold; letter-spacing: .08em; text-align: center; text-transform: uppercase; }
+.unavailable-sign { background: var(--burgundy); color: var(--cream); }
+.catalog-empty { max-width: 680px; margin: 3rem auto; padding: 4rem; border: 1px solid rgba(98, 65, 47, .25); background: var(--cream); text-align: center; }
+.room-dialog { width: min(1060px, calc(100% - 2rem)); max-height: min(800px, calc(100% - 2rem)); padding: 0; border: 1px solid var(--brass); color: var(--walnut); background: var(--paper); box-shadow: 0 20px 90px rgba(0, 0, 0, .65); }
+.room-dialog[open] { animation: dialog-arrive .45s ease both; }
+.room-dialog::backdrop { background: rgba(23, 21, 19, .84); backdrop-filter: blur(7px); }
+.dialog-layout { display: grid; grid-template-columns: 1fr 1fr; }
+.room-gallery { min-height: 590px; background: var(--charcoal); }
+.room-gallery figure { display: grid; min-height: 590px; margin: 0; place-items: center; color: var(--cream); background: radial-gradient(circle, rgba(255, 219, 146, .45), rgba(23, 21, 19, .93)); background-position: center; background-size: cover; }
+.room-gallery figure:not(:first-child) { display: none; }
+.dialog-content { padding: 4.5rem 3rem; background-image: linear-gradient(rgba(251, 247, 239, .9), rgba(251, 247, 239, .9)), url('../../hotel_core/images/heritage-wallpaper.png'); background-size: auto, 480px; }
+.dialog-content h2 { font-size: clamp(2.3rem, 4vw, 4rem); }
+.dialog-content h3 { margin-top: 2rem; color: var(--forest); }
+.dialog-close { position: absolute; z-index: 6; top: .8rem; right: .9rem; display: grid; width: 42px; height: 42px; padding: 0; place-items: center; border: 1px solid var(--brass); border-radius: 50%; color: var(--cream); background: var(--charcoal); cursor: pointer; font-size: 1.7rem; transition: transform .25s ease, background .25s ease; }
+.dialog-close:hover { transform: rotate(90deg); background: var(--burgundy); }
+.room-details { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+.room-details div { padding-top: .75rem; border-top: 1px solid rgba(98, 65, 47, .25); }
+.room-details dt { color: var(--wood); font-size: .75rem; font-weight: bold; letter-spacing: .1em; text-transform: uppercase; }
+.room-details dd { margin: .25rem 0 0; }
+.benefit-list { padding-left: 1.1rem; }.benefit-list li { margin-bottom: .5rem; }
+.sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; }
+@keyframes room-glow { 0%, 100% { filter: brightness(.9); } 50% { filter: brightness(1.12); } }
+@keyframes dialog-arrive { from { transform: translateY(24px) scale(.98); opacity: 0; } to { transform: none; opacity: 1; } }
+@media (max-width: 800px) {
+    .rooms-section { margin: 1.5rem .8rem 4rem; padding: 1rem 1.3rem; }
+    .room-entry, .dialog-layout { grid-template-columns: 1fr; gap: 2.2rem; }
+    .room-entry:nth-child(even) .door-card { order: initial; }
+    .door-card { min-height: 480px; margin: auto; }
+    .room-summary { padding: 1.4rem; }
+    .room-gallery, .room-gallery figure { min-height: 320px; }
+    .dialog-content { padding: 3.5rem 1.5rem 2rem; }
+    .room-details { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) { .room-dialog[open] { animation: none; } }
+
+/* Pasillos: cada puerta permanece visible durante su apertura. */
+.rooms-section { max-width: 1320px; }
+.floor { padding: 2.3rem 0 3.6rem; border-bottom: 1px solid rgba(98, 65, 47, .28); }
+.floor:last-child { border-bottom: 0; }
+.floor-heading { display: flex; align-items: baseline; gap: 1.2rem; margin-bottom: 2rem; }
+.floor-heading h2 { margin: 0; font-size: clamp(2rem, 3vw, 3rem); }
+.floor-corridor { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 2rem; align-items: start; padding: 1.5rem 1rem 2.2rem; border-bottom: 12px solid #684936; background: linear-gradient(180deg, rgba(255, 251, 242, .18), rgba(90, 61, 42, .13)), url('../../hotel_core/images/heritage-wallpaper.png'); background-size: auto, 480px; }
+.room-entry { display: block; min-width: 0; padding: 0; border: 0; }
+.room-entry:nth-child(even) .door-card { order: initial; }
+.door-card { width: 100%; min-height: 370px; perspective: 1200px; }
+.door-frame { overflow: visible; border-width: 7px; transform-style: preserve-3d; }
+.door-panel { transform-style: preserve-3d; }
+.door-card:hover .door-panel, .door-card:focus-visible .door-panel, .door-card.is-opening .door-panel { transform: rotateY(-78deg); }
+.door-card.is-opening .door-panel { transition-duration: .55s; }
+.room-summary { min-height: 170px; margin-top: .8rem; padding: 1.15rem; border: 1px solid rgba(98, 65, 47, .26); background: rgba(255, 251, 243, .96); box-shadow: 0 8px 22px rgba(50, 31, 24, .12); }
+.room-summary::before { display: none; }
+.room-summary h2 { margin: .3rem 0; font-size: clamp(1.5rem, 2vw, 2.2rem); }
+.room-summary p { margin: .4rem 0; }
+.room-summary .eyebrow { font-size: .68rem; }
+@media (max-width: 600px) { .floor-corridor { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .9rem; padding: 1rem .5rem; } .door-card { min-height: 245px; } .door-number { min-width: 65px; padding: .25rem; font-size: 1rem; } .room-summary { min-height: 190px; padding: 1rem .15rem; } }
+
+/* La imagen original incluye marco, pared y puerta: se muestra completa y solo gira la hoja. */
+.floor-corridor { grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 340px)); justify-content: center; }
+.door-card { display: block; width: 100%; min-height: 0; aspect-ratio: 2 / 3; perspective: 1000px; }
+.door-frame { --door-top: 8.6%; --door-right: 26%; --door-bottom: 10%; --door-left: 26.3%; border: 0; background-image: var(--door-image, linear-gradient(#62412f, #321f18)); background-size: 100% 100%; background-position: center; }
+.door-frame.door-forest { --door-top: 9%; --door-right: 26.5%; --door-bottom: 12%; --door-left: 26.1%; }
+.door-frame.door-presidential { --door-top: 8.9%; --door-right: 27%; --door-bottom: 12%; --door-left: 27%; }
+.door-frame.is-mirrored { transform: scaleX(-1); }
+.door-frame::after { display: none; }
+.room-preview { inset: var(--door-top) var(--door-right) var(--door-bottom) var(--door-left); border: 0; background-position: center; background-size: cover; box-shadow: inset 0 0 40px rgba(0, 0, 0, .7); }
+.door-frame.is-mirrored .room-preview { transform: scaleX(-1); }
+.door-panel { inset: 0; transform-origin: var(--door-left) 50%; clip-path: inset(var(--door-top) var(--door-right) var(--door-bottom) var(--door-left)); background-image: var(--door-image, linear-gradient(#704126, #3c2214)); background-size: 100% 100%; background-position: center; box-shadow: none; }
+.door-frame.is-mirrored .door-panel { transform-origin: calc(100% - var(--door-right)) 50%; }
+.door-frame.is-mirrored .door-number { transform: translateX(-50%) scaleX(-1); }
+.door-frame.has-photo .door-panel { background-size: 100% 100%; }
+.door-card:hover .door-panel, .door-card:focus-visible .door-panel, .door-card.is-opening .door-panel { transform: rotateY(-70deg); filter: none; box-shadow: none; }
+.door-card:hover .door-frame.is-mirrored .door-panel, .door-card:focus-visible .door-frame.is-mirrored .door-panel, .door-card.is-opening .door-frame.is-mirrored .door-panel { transform: rotateY(70deg); }
+.is-locked:hover .door-panel { transform: none; }
+@media (max-width: 600px) { .floor-corridor { grid-template-columns: repeat(2, minmax(0, 1fr)); } .door-card { min-height: 0; } }
+@media (prefers-reduced-motion: reduce) { .door-card:hover .door-panel, .door-card:focus-visible .door-panel, .door-card.is-opening .door-panel { transition: none; } }

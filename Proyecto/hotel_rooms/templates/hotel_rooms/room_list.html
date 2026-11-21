@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Habitaciones | The Copper Lantern Hotel{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'hotel_rooms/css/rooms.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="catalog-hero">
+    <p class="eyebrow">Productos del hotel</p>
+    <h1>Elija una puerta.<br>Descubra su estancia.</h1>
+    <p>Cada habitación conserva su propia personalidad. Las puertas disponibles revelan los detalles de la experiencia.</p>
+</section>
+
+<section class="rooms-section" aria-label="Habitaciones disponibles">
+    {% for floor in floors %}
+    <section class="floor" aria-label="Piso {{ floor.number }}">
+        <div class="floor-heading"><span class="eyebrow">Pasillo {{ floor.number }}</span><h2>Piso {{ floor.number }}</h2></div>
+        <div class="floor-corridor">
+    {% for room in floor.rooms %}
+        <article class="room-entry status-{{ room.status }} reveal">
+            {% if room.is_available %}
+                <button class="door-card js-room-trigger" type="button" data-room-dialog="room-{{ room.pk }}" aria-haspopup="dialog">
+            {% else %}
+                <div class="door-card is-locked" aria-label="Habitación {{ room.number }}: {{ room.get_status_display }}">
+            {% endif %}
+                <span class="door-frame{% if room.door_image %} has-photo{% endif %}{% if room.door_image.name == 'seed/door-mahogany.png' %} door-mahogany{% elif room.door_image.name == 'seed/door-forest.png' %} door-forest{% elif room.door_image.name == 'seed/door-presidential.png' %} door-presidential{% endif %}{% if room.mirror_door_image %} is-mirrored{% endif %}"{% if room.door_image %} style="--door-image: url('{{ room.door_image.url }}');"{% endif %}>
+                    <span class="room-preview"{% if room.cover_image %} style="background-image: url('{{ room.cover_image.url }}');"{% endif %}></span>
+                    <span class="door-panel">
+                        <span class="door-number">{{ room.number }}</span>
+                        <span class="door-knob" aria-hidden="true"></span>
+                    </span>
+                    {% if room.status == 'coming_soon' %}
+                        <span class="construction-tape tape-one">PRÓXIMAMENTE</span>
+                        <span class="construction-tape tape-two">PRÓXIMAMENTE</span>
+                    {% elif room.status == 'maintenance' %}
+                        <span class="maintenance-sign">Mantenimiento</span>
+                    {% elif room.status == 'unavailable' %}
+                        <span class="unavailable-sign">No disponible</span>
+                    {% endif %}
+                </span>
+            {% if room.is_available %}</button>{% else %}</div>{% endif %}
+
+            <div class="room-summary">
+                <p class="eyebrow">Habitación {{ room.number }}</p>
+                <h2>{{ room.name }}</h2>
+                <p>{{ room.short_description }}</p>
+                <p class="room-status">{{ room.get_status_display }}</p>
+            </div>
+        </article>
+
+        {% if room.is_available %}
+            <dialog class="room-dialog" id="room-{{ room.pk }}" aria-labelledby="room-title-{{ room.pk }}">
+                <button class="dialog-close js-dialog-close" type="button" aria-label="Cerrar detalle de {{ room.name }}">×</button>
+                <div class="dialog-layout">
+                    <div class="room-gallery">
+                        <figure{% if room.cover_image %} style="background-image: url('{{ room.cover_image.url }}');"{% endif %}>
+                            {% if not room.cover_image %}<span>Imagen de {{ room.name }}</span>{% endif %}
+                        </figure>
+                        {% for image in room.images.all %}
+                            <figure style="background-image: url('{{ image.image.url }}');"><span class="sr-only">{{ image.alt_text }}</span></figure>
+                        {% endfor %}
+                    </div>
+                    <div class="dialog-content">
+                        <p class="eyebrow">Habitación {{ room.number }}</p>
+                        <h2 id="room-title-{{ room.pk }}">{{ room.name }}</h2>
+                        <p>{{ room.description }}</p>
+                        <p class="room-price">COP ${{ room.price_per_night|floatformat:0 }} <span>por noche</span></p>
+                        <dl class="room-details">
+                            <div><dt>Capacidad</dt><dd>{{ room.capacity }} huéspedes</dd></div>
+                            <div><dt>Camas</dt><dd>{{ room.beds_description }}</dd></div>
+                            <div><dt>Estancia mínima</dt><dd>{{ room.min_stay_nights }} noche{{ room.min_stay_nights|pluralize:'s' }}</dd></div>
+                        </dl>
+                        {% if room.visible_service_benefits %}
+                            <h3>Beneficios de la estancia</h3>
+                            <ul class="benefit-list">
+                                {% for benefit in room.visible_service_benefits %}
+                                    <li><strong>{{ benefit.service.name }}</strong> · {{ benefit.get_benefit_type_display }}{% if benefit.note %}: {{ benefit.note }}{% endif %}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                        <a class="primary-action" href="{% url 'hotel_reservations:request' room.pk %}">Solicitar reserva</a>
+                    </div>
+                </div>
+            </dialog>
+        {% endif %}
+    {% endfor %}
+        </div>
+    </section>
+    {% empty %}
+        <div class="catalog-empty">
+            <p class="eyebrow">Próxima apertura</p>
+            <h2>Las puertas del hotel se están preparando.</h2>
+            <p>El administrador podrá registrar aquí cada habitación con imágenes, precio y estado de disponibilidad.</p>
+        </div>
+    {% endfor %}
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'hotel_rooms/js/rooms.js' %}"></script>
+{% endblock %}

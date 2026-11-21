@@ -1,0 +1,118 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}The Copper Lantern Hotel | Inicio{% endblock %}
+
+{% block content %}
+<section class="hero-carousel" aria-roledescription="carrusel" aria-label="Vistas de The Copper Lantern Hotel">
+    <div class="hero-slides">
+        {% for slide in slides %}
+            <article class="hero-slide{% if forloop.first %} is-active{% endif %}" data-slide="{{ forloop.counter0 }}" style="--hero-image: url('{{ slide.image.url }}');" aria-hidden="{% if forloop.first %}false{% else %}true{% endif %}"></article>
+        {% empty %}
+            <article class="hero-slide is-active" data-slide="0" style="--hero-image: linear-gradient(125deg, var(--charcoal), var(--walnut), var(--forest));" aria-hidden="false"></article>
+        {% endfor %}
+    </div>
+    <div class="hero-shade" aria-hidden="true"></div>
+    <div class="hero-content">
+        <p class="eyebrow">Desde 1926 · Una estancia con historia</p>
+        <h1>{{ site_settings.hotel_name|default:'The Copper Lantern Hotel' }}</h1>
+        {% for slide in slides %}
+            <div class="hero-story{% if forloop.first %} is-active{% endif %}" data-story="{{ forloop.counter0 }}" aria-hidden="{% if forloop.first %}false{% else %}true{% endif %}">
+                <h2>{{ slide.title }}</h2>
+                <p class="hero-copy">{{ slide.subtitle }}</p>
+                <div class="hero-actions">
+                    {% if slide.button_label and slide.button_url %}<a class="primary-action" href="{{ slide.button_url }}">{{ slide.button_label }}</a>{% endif %}
+                    <a class="secondary-action" href="{% url 'hotel_contact:contact' %}">Contáctenos</a>
+                </div>
+            </div>
+        {% empty %}
+            <div class="hero-story is-active">
+                <h2>Una estancia con historia</h2>
+                <p class="hero-copy">Un hotel boutique de espíritu clásico, creado para quienes encuentran belleza en los detalles y descanso detrás de cada puerta.</p>
+                <div class="hero-actions"><a class="primary-action" href="{% url 'hotel_rooms:list' %}">Explorar habitaciones</a></div>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="carousel-controls" aria-label="Controles del carrusel">
+        <button class="carousel-arrow js-carousel-prev" type="button" aria-label="Imagen anterior">‹</button>
+        <div class="carousel-dots">
+            {% for slide in slides %}
+                <button class="carousel-dot{% if forloop.first %} is-active{% endif %}" type="button" data-carousel-target="{{ forloop.counter0 }}" aria-label="Mostrar imagen {{ forloop.counter }}" aria-current="{% if forloop.first %}true{% else %}false{% endif %}"></button>
+            {% endfor %}
+        </div>
+        <button class="carousel-arrow js-carousel-next" type="button" aria-label="Imagen siguiente">›</button>
+    </div>
+    <a class="scroll-cue" href="#hotel"><span>Descubrir el hotel</span><i aria-hidden="true"></i></a>
+</section>
+
+<section class="intro reveal" id="hotel">
+    <div class="ornament" aria-hidden="true">◆</div>
+    <p class="eyebrow">Bienvenida</p>
+    <h2>El encanto de una era que aún ilumina.</h2>
+    <p>{{ site_settings.description|default:'The Copper Lantern Hotel reúne la calidez de la madera, la elegancia del latón y la tranquilidad de una hospitalidad pensada con calma.' }}</p>
+</section>
+
+<section class="catalog-preview reveal" id="habitaciones">
+    <div class="section-heading">
+        <div>
+            <p class="eyebrow">Habitaciones</p>
+            <h2>Detrás de cada puerta, una historia.</h2>
+        </div>
+        <a class="section-note" href="{% url 'hotel_rooms:list' %}">Explorar todas las habitaciones <span aria-hidden="true">→</span></a>
+    </div>
+    <div class="preview-grid">
+        {% for room in featured_rooms %}
+            <article class="preview-card reveal reveal-delay-{{ forloop.counter }}">
+                <div class="preview-image" style="background-image: url('{{ room.cover_image.url }}');"></div>
+                <div class="preview-copy">
+                    <p class="room-number">{{ room.number }}</p>
+                    <h3>{{ room.name }}</h3>
+                    <p>{{ room.short_description }}</p>
+                </div>
+            </article>
+        {% empty %}
+            <article class="preview-card placeholder-card"><div class="preview-copy"><p class="room-number">101</p><h3>The Traveler Room</h3><p>La primera puerta de una colección diseñada para descansar.</p></div></article>
+        {% endfor %}
+    </div>
+</section>
+
+<section class="catalog-preview services-preview reveal" id="servicios">
+    <div class="section-heading">
+        <div>
+            <p class="eyebrow">Servicios</p>
+            <h2>Atenciones que acompañan su estancia.</h2>
+        </div>
+        <a class="section-note" href="{% url 'hotel_services:list' %}">Ver todos los servicios <span aria-hidden="true">→</span></a>
+    </div>
+    <div class="preview-grid">
+        {% for service in featured_services %}
+            <article class="preview-card service-card reveal">
+                <div class="preview-image" style="background-image: url('{{ service.image.url }}');"></div>
+                <div class="preview-copy"><h3>{{ service.name }}</h3><p>{{ service.short_description }}</p></div>
+            </article>
+        {% empty %}
+            <p class="catalog-empty-note">Aún no hay servicios destacados.</p>
+        {% endfor %}
+    </div>
+</section>
+{% if quotes %}
+<section class="quotes-section reveal" aria-labelledby="quotes-title">
+    <div class="section-heading"><div><p class="eyebrow">Inspiración para viajar</p><h2 id="quotes-title">Palabras que acompañan el camino.</h2></div></div>
+    <div class="quotes-grid">
+        {% for quote in quotes %}
+            <figure class="quote-card reveal">
+                {% if quote.image %}<img src="{{ quote.image.url }}" alt="Retrato de {{ quote.author }}">{% endif %}
+                <blockquote>“{{ quote.text }}”</blockquote>
+                <figcaption><strong>{{ quote.author }}</strong>{% if quote.author_description %}<span>{{ quote.author_description }}</span>{% endif %}</figcaption>
+                {% if quote.source_url %}<a href="{{ quote.source_url }}" target="_blank" rel="noopener noreferrer">Ver fuente de la cita</a>{% endif %}
+                {% if quote.attribution %}<p class="quote-attribution">{{ quote.attribution }}</p>{% endif %}
+            </figure>
+        {% endfor %}
+    </div>
+</section>
+{% endif %}
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'hotel_core/js/home.js' %}?v=2"></script>
+{% endblock %}
